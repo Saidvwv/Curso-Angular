@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { DestinoViajeModel } from '../models/destino-viaje.model';
 
 @Component({
@@ -10,4 +10,15 @@ import { DestinoViajeModel } from '../models/destino-viaje.model';
 export class DestinoViaje {
   @Input() destino!: DestinoViajeModel;
   @HostBinding('class') cssClass = 'col-md-4 mb-4';
+  @Output() clicked = new EventEmitter<DestinoViajeModel>();
+
+
+  constructor() {
+    this.clicked = new EventEmitter();
+  }
+
+  ir() {
+    this.clicked.emit(this.destino);
+    return false;
+  }
 }

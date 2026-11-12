@@ -16,4 +16,9 @@ export class ListaDestinos {
     this.destinos.push(new DestinoViajeModel(nombre, url));
     return false;
   }
+
+elegido(d: DestinoViajeModel) {
+  this.destinos.forEach(x => x.setSelected(false));
+  d.setSelected(true);
+}
 }
