@@ -1,12 +1,24 @@
 <div class="card-content">
-  <div class="card-img">
-    <img [src]="destino.imagenUrl" [alt]="destino.nombre">
-    <span><h4>{{ destino.nombre }}</h4></span>
-  </div>
-  <div class="card-desc">
-    <h3>{{ destino.nombre }}</h3>
-    <p>lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    <a href="#" class="btn-card" (click)="ir()">Ir</a>
-    <div [style.display]="destino.isSelected() ? 'block' : 'none'">- PREFERIDO -</div>
-  </div>
+    <div class="card-img">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TOuN5c7feOZU6jhPmkb1co7aR0x7Mfe010Q8i25ZPv0_QIPSJPXkP0jyhP3NbivH8fGRt969hzKLdYXtqH5fO2d6Qycg7MU9HRVc5hw41NtOErWR5bg2lvwvwGiqmljXI-7aabyw=s1360-w1360-h1020-rw"
+            alt="jamaica">
+        <span>
+            <h4>{{position}}</h4>
+        </span>
+    </div>
+    <div class="card-desc">
+        <h3>{{ destino.nombre }}</h3>
+        <p>Servicios</p>
+        <ul>
+            <li *ngFor="let s of destino.servicios">
+                <span [ngSwitch]="s">
+                    <i *ngSwitchCase="'desayuno'" style="color: red;">{{ s }}</i>
+                    <i *ngSwitchDefault>{{ s }}</i>
+                </span>
+            </li>
+        </ul>
+        <a href="#" class="btn-card" (click)="ir()">Ir</a>
+        <span *ngIf="destino.isSelected()">- PREFERIDO -</span>
+        <a routerLink="/destino">Ver detalle</a>
+    </div>
 </div>
