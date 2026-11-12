@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { DestinoViaje } from '../destino-viaje/destino-viaje';
+import { FormDestinoViaje } from '../form-destino-viaje/form-destino-viaje';
 import { DestinoViajeModel } from '../models/destino-viaje.model';
 
 @Component({
-  imports: [NgFor, DestinoViaje],
+  imports: [NgFor, DestinoViaje, FormDestinoViaje],
   selector: 'app-lista-destinos',
   styleUrl: './lista-destinos.css',
   templateUrl: './lista-destinos.html',
@@ -12,13 +13,12 @@ import { DestinoViajeModel } from '../models/destino-viaje.model';
 export class ListaDestinos {
   destinos: DestinoViajeModel[] = [];
 
-  guardar(nombre: string, url: string): boolean {
-    this.destinos.push(new DestinoViajeModel(nombre, url));
-    return false;
+  agregado(d: DestinoViajeModel) {
+    this.destinos.push(d);
   }
 
-elegido(d: DestinoViajeModel) {
-  this.destinos.forEach(x => x.setSelected(false));
-  d.setSelected(true);
-}
+  elegido(d: DestinoViajeModel) {
+    this.destinos.forEach(x => x.setSelected(false));
+    d.setSelected(true);
+  }
 }
