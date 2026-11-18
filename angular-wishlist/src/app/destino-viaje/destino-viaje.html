@@ -1,9 +1,8 @@
 <div class="card-content">
     <div class="card-img">
-        <img src="https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TOuN5c7feOZU6jhPmkb1co7aR0x7Mfe010Q8i25ZPv0_QIPSJPXkP0jyhP3NbivH8fGRt969hzKLdYXtqH5fO2d6Qycg7MU9HRVc5hw41NtOErWR5bg2lvwvwGiqmljXI-7aabyw=s1360-w1360-h1020-rw"
-            alt="jamaica">
+        <img src="prueba.jpg" alt="jamaica">
         <span>
-            <h4>{{position}}</h4>
+            <h4>{{ position + 1 }}</h4>
         </span>
     </div>
     <div class="card-desc">
@@ -17,8 +16,17 @@
                 </span>
             </li>
         </ul>
-        <a href="#" class="btn-card" (click)="ir()">Ir</a>
-        <span *ngIf="destino.isSelected()">- PREFERIDO -</span>
-        <a routerLink="/destino">Ver detalle</a>
+
+        <div class="votos">
+            <a href="#" (click)="voteUp()"><span class="material-icons">thumb_up</span></a>
+            <a href="#" (click)="voteDown()"><span class="material-icons">thumb_down</span></a>
+            <span>Votos: {{ destino.votes() }}</span>
+        </div>
+
+        <div class="acciones">
+            <a href="#" class="btn-card" (click)="ir()">Ir</a>
+            <span *ngIf="destino.isSelected()">- PREFERIDO -</span>
+            <a routerLink="/destino">Ver detalle</a>
+        </div>
     </div>
 </div>

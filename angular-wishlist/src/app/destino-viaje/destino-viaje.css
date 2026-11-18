@@ -1,0 +1,22 @@
+.votos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.votos a {
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.acciones {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn-card {
+  display: inline-block;
+}
