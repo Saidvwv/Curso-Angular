@@ -1,4 +1,5 @@
-import { ApplicationConfig, isDevMode, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ApplicationConfig, inject, isDevMode, provideAppInitializer, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { ActionReducerMap, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
@@ -6,6 +7,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { routes } from './app.routes';
 import { APP_CONFIG, APP_CONFIG_VALUE } from './app-config.token';
+import { AppLoadService } from './services/app-load.service';
 import {
   DestinosViajesActions,
   DestinosViajesEffects,
@@ -30,9 +32,11 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
+    provideHttpClient(),
     { provide: APP_CONFIG, useValue: APP_CONFIG_VALUE },
     provideStore(reducers, { initialState: reducersInitialState }),
     provideEffects([DestinosViajesEffects]),
+    provideAppInitializer(() => inject(AppLoadService).initializeDestinosViajesState()),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),

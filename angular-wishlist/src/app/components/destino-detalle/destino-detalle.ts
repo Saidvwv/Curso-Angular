@@ -2,7 +2,6 @@ import { Component, inject, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DestinoViajeModel } from '../../models/destino-viaje.model';
 import { DestinosApiClient } from '../../models/destinos-api-client.model';
-import { APP_CONFIG } from '../../app-config.token';
 
 class DestinosApiClientViejo {
   getById(id: string): DestinoViajeModel | null {
@@ -13,8 +12,6 @@ class DestinosApiClientViejo {
 
 @Injectable()
 class DestinosApiClientDecorated extends DestinosApiClient {
-  private config = inject(APP_CONFIG);
-
   override getById(id: string): DestinoViajeModel | null {
     console.log('llamando por la clase decorada!');
     console.log('config: ' + this.config.apiEndpoint);
