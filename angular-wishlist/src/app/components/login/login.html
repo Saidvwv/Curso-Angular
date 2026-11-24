@@ -1,0 +1,18 @@
+@if (!authService.getUser()) {
+  <form class="login-form">
+    <div class="mb-3">
+      <label for="username" class="form-label">User: (type <em>user</em>)</label>
+      <input class="form-control" id="username" name="username" #username>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password: (type <em>password</em>)</label>
+      <input class="form-control" type="password" id="password" name="password" #password>
+    </div>
+    <button type="button" class="btn btn-primary w-100" (click)="login(username.value, password.value)">Entrar!</button>
+    <div class="text-danger mt-2">{{ mensajeError }}</div>
+  </form>
+} @else {
+  <div class="login-form">
+    <button type="button" class="btn btn-secondary w-100" (click)="logout()">Salir!</button>
+  </div>
+}

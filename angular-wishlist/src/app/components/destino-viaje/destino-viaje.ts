@@ -3,9 +3,9 @@ import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/c
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import { DestinoViajeModel } from '../models/destino-viaje.model';
-import { VoteDownAction, VoteUpAction } from '../models/destinos-viajes-state.model';
-import type { AppState } from '../app.config';
+import { DestinoViajeModel } from '../../models/destino-viaje.model';
+import { VoteDownAction, VoteUpAction } from '../../models/destinos-viajes-state.model';
+import type { AppState } from '../../app.config';
 
 @Component({
   imports: [NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault, RouterOutlet, RouterLink],

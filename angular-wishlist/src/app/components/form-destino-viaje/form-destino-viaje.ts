@@ -4,7 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validatio
 import { fromEvent } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { map, filter, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { DestinoViajeModel } from '../models/destino-viaje.model';
+import { DestinoViajeModel } from '../../models/destino-viaje.model';
 
 
 @Component({

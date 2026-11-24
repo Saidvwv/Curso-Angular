@@ -5,9 +5,9 @@ import { Store } from '@ngrx/store';
 
 import { DestinoViaje } from '../destino-viaje/destino-viaje';
 import { FormDestinoViaje } from '../form-destino-viaje/form-destino-viaje';
-import { DestinoViajeModel } from '../models/destino-viaje.model';
-import { DestinosApiClient } from '../models/destinos-api-client.model';
-import type { AppState } from '../app.config';
+import { DestinoViajeModel } from '../../models/destino-viaje.model';
+import { DestinosApiClient } from '../../models/destinos-api-client.model';
+import type { AppState } from '../../app.config';
 
 @Component({
   imports: [NgFor, DestinoViaje, FormDestinoViaje],
