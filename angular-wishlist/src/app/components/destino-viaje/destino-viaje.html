@@ -26,7 +26,7 @@
         <div class="acciones">
             <a href="#" class="btn-card" (click)="ir()">Ir</a>
             <span *ngIf="destino.isSelected()">- PREFERIDO -</span>
-            <a routerLink="/destino">Ver detalle</a>
+            <a [routerLink]="['/destino', destino.id]">Ver detalle</a>
         </div>
     </div>
 </div>

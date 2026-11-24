@@ -1,10 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import { fromEvent } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { map, filter, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { DestinoViajeModel } from '../../models/destino-viaje.model';
+import { APP_CONFIG } from '../../app-config.token';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class FormDestinoViaje implements OnInit {
   fg: FormGroup;
   minLongitud = 3;
   searchResults: string[] = [];
+  private config = inject(APP_CONFIG);
 
   constructor(fb: FormBuilder) {
     this.fg = fb.nonNullable.group({
@@ -40,10 +42,11 @@ export class FormDestinoViaje implements OnInit {
         filter((text) => text.length > 2),
         debounceTime(200),
         distinctUntilChanged(),
-        switchMap(() => ajax<string[]>('/datos.json'))
+        switchMap((text: string) =>
+          ajax<string[]>(this.config.apiEndpoint + '/ciudades?q=' + encodeURIComponent(text))
+        )
       )
       .subscribe((ajaxResponse) => {
-        console.log(ajaxResponse.response);
         this.searchResults = ajaxResponse.response;
       });
   }

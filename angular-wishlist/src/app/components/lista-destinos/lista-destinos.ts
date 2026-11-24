@@ -11,6 +11,7 @@ import type { AppState } from '../../app.config';
 
 @Component({
   imports: [NgFor, DestinoViaje, FormDestinoViaje],
+  providers: [DestinosApiClient],
   selector: 'app-lista-destinos',
   styleUrl: './lista-destinos.css',
   templateUrl: './lista-destinos.html',
