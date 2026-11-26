@@ -1,5 +1,7 @@
 import { Component, inject, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MapComponent, MarkerComponent } from '@maplibre/ngx-maplibre-gl';
+import type { StyleSpecification } from 'maplibre-gl';
 import { DestinoViajeModel } from '../../models/destino-viaje.model';
 import { DestinosApiClient } from '../../models/destinos-api-client.model';
 
@@ -20,7 +22,7 @@ class DestinosApiClientDecorated extends DestinosApiClient {
 }
 
 @Component({
-  imports: [],
+  imports: [MapComponent, MarkerComponent],
   selector: 'app-destino-detalle',
   styleUrl: './destino-detalle.css',
   templateUrl: './destino-detalle.html',
@@ -34,10 +36,35 @@ export class DestinoDetalle implements OnInit {
   private destinosApiClient = inject(DestinosApiClientViejo);
   destino: DestinoViajeModel | null = null;
 
+  style: StyleSpecification = {
+    version: 8,
+    sources: {
+      world: {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json',
+      },
+    },
+    layers: [
+      {
+        id: 'countries',
+        type: 'fill',
+        source: 'world',
+        layout: {},
+        paint: {
+          'fill-color': '#6F788A',
+        },
+      },
+    ],
+  };
+
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.destino = this.destinosApiClient.getById(id);
     }
+  }
+
+  saludar() {
+    alert('Hola');
   }
 }

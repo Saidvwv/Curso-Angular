@@ -1,0 +1,13 @@
+mgl-map {
+  display: block;
+  height: 50vh;
+  width: 100vw;
+}
+
+.marker {
+  background: #0d6efd;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}

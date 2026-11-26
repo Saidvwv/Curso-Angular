@@ -1,3 +1,43 @@
+.card-content {
+  background-color: whitesmoke;
+  transition: background-color 1s;
+}
+
+.card-content.favorito {
+  background-color: paleturquoise;
+  transition: background-color 3s;
+}
+
+.card-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-img span {
+  position: absolute;
+  top: 15%;
+  left: 12%;
+  background: #1abc9c;
+  padding: 6px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 4px;
+  transform: translate(-50%, -50%);
+}
+
+.card-img span h4 {
+  font-size: 12px;
+  margin: 0;
+  padding: 10px 5px;
+  line-height: 0;
+}
+
 .votos {
   display: flex;
   align-items: center;
