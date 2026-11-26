@@ -6,7 +6,7 @@
   {{ destino?.nombre }}
 </p>
 <hr>
-<mgl-map [style]="style" [zoom]="2">
+<mgl-map [mapStyle]="style" [zoom]="2">
   <mgl-marker [lngLat]="[-75.551012, 10.421185]">
     <div class="marker" (click)="saludar()">Hola mundo!</div>
   </mgl-marker>
