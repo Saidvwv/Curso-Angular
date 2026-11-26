@@ -1,4 +1,12 @@
 <div class="container content">
+  <div style="float: right;">
+    <select #lang (change)="translate.use(lang.value)">
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+
   <div class="page header">
     <h1>Ruteo Simple</h1>
     <div class="navLinks">
@@ -7,11 +15,11 @@
     </div>
   </div>
 
-  <h1>{{ title() }}</h1>
+  <h1>{{ title() }} <b>{{ 'HOLA' | translate }}</b></h1>
 </div>
 
 <router-outlet />
 
 <hr class="mb-5">
 
-Fecha: {{ time | async}}
+Fecha: {{ time | async }}
